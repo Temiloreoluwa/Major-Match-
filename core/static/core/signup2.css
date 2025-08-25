@@ -1,0 +1,12 @@
+.year, .course {
+    display: inline-block;
+    width: 45%;
+}
+
+.year {
+    margin-right: 30px;
+}
+
+.interest {
+    margin-top: 30px;
+}

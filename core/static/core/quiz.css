@@ -1,0 +1,33 @@
+.btn {
+  background: #4242e1;
+  color: white;
+}
+
+.overlay {
+  border: 2px solid #4242e1;
+  /* top: 65%; */
+  left: 40%;
+}
+
+section {
+  padding: 2rem;
+  border-radius: 20px;
+}
+
+.quiz-container {
+  background-color: #d9d9d9;
+  width: 50%;
+  padding: 2rem;
+}
+
+.form-section {
+  background: #eeeeee;
+}
+
+.text-area {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}

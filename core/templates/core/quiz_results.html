@@ -1,0 +1,103 @@
+{% extends "core/layout.html" %}
+{% load static %}
+
+{% block title %}AI Recommendation App | Login Form{% endblock %}
+
+{% block extra_css %}
+    
+    <link href="{% static 'core/index.css' %}" rel="stylesheet">
+    <!-- <link href="{% static 'core/login.css' %}" rel="stylesheet"> -->
+    <link href="{% static 'core/quiz_result.css' %}" rel="stylesheet">
+
+{% endblock %}
+{% block body %}
+
+  {% if message %}
+      <div class="alert alert-danger " role="alert">
+        {{ message }}
+      </div>
+  {% endif %}
+
+   <main>
+        <nav class="navbar-local navbar navbar-expand-lg">
+            <div class="container-fluid navbar-local-head-full">
+                <a class="nav-link navbar-local-head" href="{% url 'index' %}">
+                    <img src="{% static 'core/images/logo.png' %}" class="logo-img" alt="Logo">
+                </a>
+                <div>MAJOR MATCH: CS PATHWAY</div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end text-white" id="navbarNav">
+                    <ul class="navbar-nav text-white">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Contact</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">About</a>
+                        </li>
+                       
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{{ request.user }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link log" href="{% url 'logout' %}">Log Out</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link log" href="{% url 'login' %}">Log In</a>
+                        </li>
+
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section class="section-one">
+            <h1 class="section-one-text">FIND YOUR</h1>
+            <h1 class="section-one-text section-one-h1">PATH</h1>
+
+            <h3 class="section-one-sub-text">MAJOR MATCH</h3>
+            <h3 class="section-one-sub-text">THAT CAREER PATH THAT SUITS YOU</h3>
+
+        <div class="overlay">
+                <div>
+                    <h1><i class="fa-solid fa-circle-user"></i> AI Processing .....</h1>
+                </div>
+        </div>
+
+           
+        <!-- <a href="{% url 'quiz' %}" class="btn">Take the Assessment</a> -->
+    </section>
+    <!-- <div class="background-shape">
+
+    </div> -->
+
+
+</main>
+
+
+<section class="quiz-results">
+  <ul>
+    {% for cat, score in categories %}
+      <li><strong>{{ cat }}:</strong> {{ score }}</li>
+    {% endfor %}
+  </ul>
+
+  <form method="" action="{% url 'ai_recommendation' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn">Get AI Recommendations</button>
+  </form>
+</section>
+
+
+  
+{% endblock %}

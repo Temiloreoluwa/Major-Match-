@@ -1,0 +1,123 @@
+{% extends "core/layout.html" %}
+{% load static %}
+
+{% block title %}AI Recommendation App | Login Form{% endblock %}
+
+{% block extra_css %}
+    <link href="{% static 'core/index.css' %}" rel="stylesheet">
+    <link href="{% static 'core/login.css' %}" rel="stylesheet">
+    <link href="{% static 'core/signup1.css' %}" rel="stylesheet">
+    <link href="{% static 'core/signup2.css' %}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+
+  {% if message %}
+      <div>{{ message }}</div>
+  {% endif %}
+
+  <main>
+        <nav class="navbar-local navbar navbar-expand-lg">
+            <div class="container-fluid navbar-local-head-full">
+                <a class="nav-link navbar-local-head" href="{% url 'index' %}">
+                    <img src="{% static 'core/images/logo.png' %}" class="logo-img" alt="Logo">
+                </a>
+                <div>MAJOR MATCH: CS PATHWAY</div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end text-white" id="navbarNav">
+                    <ul class="navbar-nav text-white">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Contact</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">About</a>
+                        </li>
+                       
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{{ request.user }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link log" href="{% url 'logout' %}">Log Out</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link log" href="{% url 'login' %}">Log In</a>
+                        </li>
+
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section class="section-one">
+            <h1 class="section-one-text">FIND YOUR</h1>
+            <h1 class="section-one-text section-one-h1">PATH</h1>
+
+            <h3 class="section-one-sub-text">MAJOR MATCH</h3>
+            <h3 class="section-one-sub-text">THAT CAREER PATH THAT SUITS YOU</h3>
+
+        <div class="overlay">
+                <div>
+                    <h1>SIGN UP</h1>
+                </div>
+        </div>
+
+           
+      
+    </section>
+ 
+
+
+</main>
+  
+<section class="form">
+      <form method="post" action="{% url 'signup_step2' %}">
+        {% csrf_token %}
+        <h2>Create an Account</h2>
+        <h4>Step 2: Academic Credential</h3>
+          <div class="form-group">
+            <label for="uniname">University Name</label>
+              <input type="text" class="form-control" id="uniname" name="uniname" required>
+          </div>
+          <div class="form-group year">
+            <label for="studyyear">Current Year of Study</label>
+              <input type="month" class="form-control" id="studyyear" name="studyyear" required>
+          </div>
+          <div class="form-group course">
+                <label for="course">Course of Study</label>
+              <input type="text" class="form-control" id="course" name="course" required>
+          </div>
+        <h4 class="interest">Step 3: Interests and Preference</h3>
+          <div class="form-group number">
+            <label for="skill">Technical Skills</label>
+              <input type="text" class="form-control" id="skill" name="skill" required>
+          </div>
+          <div class="form-group email">
+                <label for="speciality">Preferred Specialization</label>
+                <input type="text" class="form-control" id="speciality" name="speciality" required>
+          </div>
+          <div class="form-group birth">
+                <label for="goal">Career Goal</label>
+                <input type="text" class="form-control" id="goal" name="goal" required> 
+          </div>
+         
+          <div class="form-group submit-button">
+                <button type="submit" class="btn btn-primary">Next</button>
+          </div>  
+          
+      </form>
+</section>
+  
+{% endblock %}
+{% block extra_js %}
+    <script src="{% static 'core/login.js' %}"></script>
+{% endblock %}

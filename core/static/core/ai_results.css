@@ -1,0 +1,36 @@
+
+.recommendation-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* line-height: 1.6; */
+  color: #fff;
+}
+
+.recommendation-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #2980b9;
+}
+
+.ai-result {
+  white-space: pre-wrap;
+}
+
+.ai-result h3 {
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  color: #2980b9;
+}
+
+.ai-result strong {
+  /* display: block; */
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: #2980b9;
+}

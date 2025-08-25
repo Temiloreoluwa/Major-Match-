@@ -1,0 +1,132 @@
+{% extends "core/layout.html" %}
+{% load static %}
+
+{% block title %}AI Recommendation App | Login Form{% endblock %}
+
+{% block extra_css %}
+    
+    <link href="{% static 'core/index.css' %}" rel="stylesheet">
+    <link href="{% static 'core/login.css' %}" rel="stylesheet">
+    <link href="{% static 'core/profile.css' %}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+
+  {% if message %}
+      <div class="alert alert-danger " role="alert">
+        {{ message }}
+      </div>
+  {% endif %}
+
+   <main>
+        <nav class="navbar-local navbar navbar-expand-lg">
+            <div class="container-fluid navbar-local-head-full">
+                <a class="nav-link navbar-local-head" href="{% url 'index' %}">
+                    <img src="{% static 'core/images/logo.png' %}" class="logo-img" alt="Logo">
+                </a>
+                <div>MAJOR MATCH: CS PATHWAY</div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end text-white" id="navbarNav">
+                    <ul class="navbar-nav text-white">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Contact</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">About</a>
+                        </li>
+                       
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'profile' %}">{{ request.user }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link log" href="{% url 'logout' %}">Log Out</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link log" href="{% url 'login' %}">Log In</a>
+                        </li>
+
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section class="section-one">
+            <h1 class="section-one-text">FIND YOUR</h1>
+            <h1 class="section-one-text section-one-h1">PATH</h1>
+
+            <h3 class="section-one-sub-text">MAJOR MATCH</h3>
+            <h3 class="section-one-sub-text">THAT CAREER PATH THAT SUITS YOU</h3>
+
+        <div class="overlay">
+                <div>
+                    <h1><i class="fa-solid fa-circle-user"></i> Profile</h1>
+                </div>
+        </div>
+
+           
+    </section>
+</main>
+  
+<section class="profile">
+    <div class="profile-details">
+        <h2> 
+            <i class="fa-solid fa-user"></i> 
+            Welcome Back, {{ request.user.username }}
+        </h2>
+
+        <article class="profile-academic">
+            <div class="personal-info">
+                <h3>Personal Information</h3>
+                <p><strong>Full Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>Username:</strong> {{ user.username }}</p>
+                <p><strong>Phone Number:</strong> {{ user.number }}</p>
+                <p><strong>Date of Birth:</strong> {{ user.date_of_birth }}</p>
+            </div>
+
+            <div class="academics">
+                <h3>Academic Information</h3>
+                <p><strong>Course:</strong> {{ user.course }}</p>
+                <p><strong>University:</strong> {{ user.uni_year }}</p>
+                <p><strong>Skill:</strong> {{ user.skill }}</p>
+            </div>
+
+        </article>
+       
+        <div class="career">
+            <h3>Career Information</h3>
+            <p><strong>Career Speciality:</strong> {{ user.speciality }}</p>
+            <p><strong>Career Skill:</strong> {{ user.skill }}</p>
+            <p><strong>Career Goals:</strong> {{ user.goal }}</p>
+        </div>
+</div>
+         
+<!-- <div class="quiz-results">
+            <h3>Quiz Results</h3>
+            {% if quiz_results %}
+                <ul>
+                    {% for result in quiz_results %}
+                        <li>{{ result.question }}: {{ result.answer }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No quiz results available.</p>
+            {% endif %}
+</div>   -->
+</section>
+
+ 
+{% endblock %}
+{% block extra_js %}
+    <script src="{% static 'core/login.js' %}"></script>
+{% endblock %}

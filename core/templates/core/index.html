@@ -1,0 +1,110 @@
+{% extends "core/layout.html" %}
+{% load static %}
+
+
+{% block title %}Welcome Home{% endblock %}
+
+{% block extra_css %}
+    <link href="{% static 'core/index.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+ <main>
+        <nav class="navbar-local navbar navbar-expand-lg">
+            <div class="container-fluid navbar-local-head-full">
+                <a class="nav-link navbar-local-head" href="{% url 'index' %}">
+                    <img src="{% static 'core/images/logo.png' %}" class="logo-img" alt="Logo">
+                </a>
+                <div>MAJOR MATCH: CS PATHWAY</div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end text-white" id="navbarNav">
+                    <ul class="navbar-nav text-white">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Contact</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">About</a>
+                        </li>
+                       
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'profile' %}">{{ request.user }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link log" href="{% url 'logout' %}">Log Out</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'signup_step1' %}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link log" href="{% url 'login' %}">Log In</a>
+                        </li>
+
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section class="section-one">
+            <h1 class="section-one-text">FIND YOUR</h1>
+            <h1 class="section-one-text section-one-h1">PATH</h1>
+
+            <h3 class="section-one-sub-text">MAJOR MATCH</h3>
+            <h3 class="section-one-sub-text">THAT CAREER PATH THAT SUITS YOU</h3>
+        
+
+
+       
+        <div class="overlay">
+                <div>
+                    <img src="{% static 'core/images/quiz.png' %}" alt="">
+                    <p>QUIZ</p>
+                </div>
+                <div>
+                    <img src="{% static 'core/images/quiz.png' %}" alt="">
+                    <p>QUIZ</p>
+                </div>
+                <div>
+                    <img src="{% static 'core/images/quiz.png' %}" alt="">
+                    <p>QUIZ</p>
+                </div>
+        </div>
+
+      
+     
+    </section>
+    <!-- <div class="background-shape">
+
+    </div> -->
+
+
+</main>
+
+
+<section class="features">
+    <div class="container">
+        <!-- <h2>How It Works</h2> -->
+        <div class="feature-grid">
+            <div class="feature feature-img">
+                <img src="{% static 'core/images/index_img.JPG' %}" alt="">
+            </div>
+            <div class="feature">
+                <div class="icon"></div>
+                <h3>FINDIND THE CAREER PART THAT SUITS YOU</h3>
+                <p>Major Match is the application designed to help you find the best career path that suits you.</p>
+                <p>Finding the best career path that aligns with your interests, goals and most importantly your personality</p>
+
+                <a href="{% url 'career_quiz' %}" class="btn">START YOUR JOURNEY</a>
+            </div>
+        </div>
+    </div>
+</section>
+    
+{% endblock %}

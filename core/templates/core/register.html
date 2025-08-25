@@ -1,0 +1,119 @@
+{% extends "core/layout.html" %}
+{% load static %}
+
+{% block title %}AI Recommendation App | Login Form{% endblock %}
+
+{% block extra_css %}
+    <link href="{% static 'core/index.css' %}" rel="stylesheet">
+    <link href="{% static 'core/login.css' %}" rel="stylesheet">
+    <link href="{% static 'core/signup1.css' %}" rel="stylesheet">
+    <link href="{% static 'core/register.css' %}" rel="stylesheet">
+
+{% endblock %}
+{% block body %}
+
+  {% if message %}
+      <div>{{ message }}</div>
+  {% endif %}
+
+  <main>
+        <nav class="navbar-local navbar navbar-expand-lg">
+            <div class="container-fluid navbar-local-head-full">
+                <a class="nav-link navbar-local-head" href="{% url 'index' %}">
+                    <img src="{% static 'core/images/logo.png' %}" class="logo-img" alt="Logo">
+                </a>
+                <div>MAJOR MATCH: CS PATHWAY</div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end text-white" id="navbarNav">
+                    <ul class="navbar-nav text-white">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Contact</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">About</a>
+                        </li>
+                       
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'profile' %}">{{ request.user }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link log" href="{% url 'logout' %}">Log Out</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link log" href="{% url 'login' %}">Log In</a>
+                        </li>
+
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section class="section-one">
+            <h1 class="section-one-text">FIND YOUR</h1>
+            <h1 class="section-one-text section-one-h1">PATH</h1>
+
+            <h3 class="section-one-sub-text">MAJOR MATCH</h3>
+            <h3 class="section-one-sub-text">THAT CAREER PATH THAT SUITS YOU</h3>
+
+        <div class="overlay">
+                <div>
+                    <h1>SIGN UP</h1>
+                </div>
+        </div>
+
+           
+     
+    </section>
+
+
+
+</main>
+  
+<section class="form">
+      <form method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+        <h2>Create an Account</h2>
+        <h4>Step 4: Account Credential</h3>
+          <div class="form-group">
+            <label for="username">Username</label>
+              <input type="text" class="form-control" id="username" name="username" required>
+          </div>
+       
+          <div class="form-group email">
+            <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" name="password" required>
+          </div>
+          <div class="form-group birth">
+            <label for="confirmation">Confirm Password</label>
+              <input type="password" class="form-control" id="confirmation" name="confirmation" required> 
+          </div>
+          <div class="form-group birth">
+            <input type="checkbox" class="" id="agree" name="agree" required> 
+            <label for="agree">I agree to the Terms and Condition</label>
+          </div>
+         <div class="form-group birth">
+            <input type="checkbox" class="" id="update" name="update" required> 
+            <label for="update">I would love to recieve updates</label>
+          </div>
+          <div class="form-group submit-button">
+            <button type="submit" class="btn btn-primary">Register</button>
+          </div>  
+          
+      </form>
+</section>
+  
+{% endblock %}
+{% block extra_js %}
+    <script src="{% static 'core/login.js' %}"></script>
+{% endblock %}

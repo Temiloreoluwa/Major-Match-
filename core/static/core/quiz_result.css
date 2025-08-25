@@ -1,0 +1,17 @@
+.overlay {
+  left: 33%;
+  top: 0;
+}
+
+.quiz-results {
+  padding: 2rem;
+  background-color: #d9d9d9d9;
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 1.2rem; 
+}
+
+.quiz-results ul {
+  list-style-type: none;
+  padding: 0;
+}

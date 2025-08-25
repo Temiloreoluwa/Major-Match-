@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+.overlay {
+  top: 60%;
+  left: 42%;
+  background-color: #4242e1;
+  
+}
+
+.overlay h1 {
+  color: #eeeeee;
+}
+
+.form {
+  background: #eeeeee;
+  height: 500px;
+  padding-top: 30px;
+}
+
+form {
+  width: 400px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin: 40px auto;
+}
+
+.submit-button {
+  width: 40%;
+  margin: 0 auto;
+}
+
+button[type="submit"] {
+  width: 100%;
+  background: #4242e1;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 16px;
+  transition: 0.3s ease;
+  margin: 0 auto;
+}
+
+button {
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  color: #fff;
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.register {
+  text-align: center;
+  margin-top: 30px;
+  color: #fff;
+}

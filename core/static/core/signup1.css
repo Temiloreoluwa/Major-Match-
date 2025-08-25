@@ -1,0 +1,26 @@
+.form {
+  background: #eeeeee;
+  height: 750px;
+  padding-top: 30px;
+}
+
+form {
+    width: 700px;
+    height: 620px;
+    position: relative;
+}
+
+.number, .email, .birth {
+    display: inline-block;
+    width: 45%;
+}
+
+.number {
+    margin-right: 30px;
+}
+
+.submit-button {
+    position: absolute;
+    left: 60%;
+    width: 30%;
+}
